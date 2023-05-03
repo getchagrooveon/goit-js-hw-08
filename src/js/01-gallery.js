@@ -15,9 +15,6 @@ const structure = galleryItems
   ).join('\r\n');
 gallery.innerHTML = structure
 
-
-gallery.addEventListener("click", (event)=>{
-    event.preventDefault()
 const lightbox = new SimpleLightbox('.gallery__link', {
   captions: true, 
   captionSelector: 'img',
@@ -26,5 +23,4 @@ const lightbox = new SimpleLightbox('.gallery__link', {
   captionPosition: 'bottom', 
   captionDelay: 250,
   docClose: true,
-})
 })

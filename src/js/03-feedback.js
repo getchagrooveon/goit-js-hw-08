@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle'
 const feedbackForm = document.querySelector('.feedback-form')
-const email = document.querySelector('[type="email"]')
-const message = document.querySelector('[name="message"]')
+const emailOriginal = document.querySelector('[type="email"]')
+const messageOriginal = document.querySelector('[name="message"]')
 const submit = document.querySelector('[type="submit"]')
 
 const data = {}
@@ -9,14 +9,17 @@ const data = {}
 const storage = localStorage.getItem('feedback-form-state')
 
 if (storage) {
+    console.log(1);
     const {message, email} = JSON.parse(storage)
-    message.value = message
-    email.value = email
+    messageOriginal.value = message
+    emailOriginal.value = email
+    data.email = email
+    data.message = message
 }
 
 function onInput() {
-    data.email = email.value
-    data.message = message.value
+    data.email = emailOriginal.value
+    data.message = messageOriginal.value
     localStorage.setItem('feedback-form-state', `${JSON.stringify(data)}`)
     }
 
